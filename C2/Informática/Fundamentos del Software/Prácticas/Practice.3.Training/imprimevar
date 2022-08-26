@@ -1,0 +1,4 @@
+variable=ordenador
+printf "Me acabo de comprar un $variable\n"
+printf 'Me acabo de comprar un $variable\n'
+printf "Me acabo de comprar un \$variable\n"

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+break 15
+run
+info locals
+p/x$pc
+x/i$pc
+n
+break 29
+info locals
+p/x$pc
+x/i$pc
+n
+break 42
+info locals
+p/x$pc
+x/i$pc
+n
+break 47
+info locals
+p/x$pc
+x/i$pc
+n
+delete breakpoints 2 3 4

@@ -1,0 +1,102 @@
+// Ejercicio FlujoMensajes Quintín Mesa Romero
+
+#include <iostream>
+using namespace std;
+
+ // Clase TablaRectangular
+
+Supongo todos los métodos y datos miembro implementados
+
+// Procedo a implementar la clase y los métodos que me pide el ejercicio
+
+class FlujoMensajes
+{
+
+private: 
+
+	TablaRectangular actividad;
+	int num_usuarios;
+
+public:
+
+	int Actividad (int i)
+	{
+	   int activity = actividad.Elemento(0,0);
+
+	   for (int c = 0; c < actividad.cols_utilizadas; c++){
+   
+	      activity = activity + actividad.Elemento(i,c);
+	   }
+
+	   return (activity);
+	}
+
+	/**************************************************************/
+	int Popularidad (int i)
+	{
+
+	   int popularidad = actividad.Elemento(0,0);
+	
+	   for (int p = 0; p < num_usuarios; p++){
+
+	      popularidad = popularidad + actividad.Elemento(p,i);
+
+	   }
+
+           return (popularidad);
+	}
+
+	/**************************************************************/
+	TablaRectangular Resumen(void)
+	{
+
+	   int numero_filas = num_usuarios;
+	
+	   int numero_columnas = 2;
+
+	   TablaRectangular resumen (numero_filas, numero_columnas);
+
+	   for (int i = 0; i < resumen.FilasUtilizadas; i++){
+
+	       for (int j = 0; j < resumen.ColsUtilizadas; j++){
+
+		    resumen.Elemento (i,0) = Actividad(i);
+		    resumen.Elemento (i,1) = Popularidad (i);
+
+	       }
+
+	    }
+
+	    return (resumen);
+	  }
+	
+
+	/***************************************************************/
+	int MasPopular(void)
+	{
+
+	   int maxima_popularidad = actividad.Elemento(0,0);
+	   int j;
+
+	   for (j = 0; j < num_usuarios; j++){
+
+	       if (maxima_popularidad < popularidad(j)){
+	
+		  maxima_popularidad = popularidad(j);
+
+	    }
+
+	    return (j);
+
+ 	 }
+	
+	/***************************************************************/
+
+		   
+
+	   
+	   
+
+	   
+
+	

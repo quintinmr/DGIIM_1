@@ -1,0 +1,7 @@
+quintinmr@quintinmr-BOHK-WAX9X:~$ (ls -l /etc/) > ejercicio1.txt
+quintinmr@quintinmr-BOHK-WAX9X:~$ pwd >> ejercicio1.txt
+quintinmr@quintinmr-BOHK-WAX9X:~$ (cat /root/ sample.txt && echo "file found") || echo "file not found"
+cat: /root/: Permiso denegado
+cat: sample.txt: No existe el archivo o el directorio
+file not found
+

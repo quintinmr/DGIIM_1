@@ -1,0 +1,125 @@
+quintinmr@quintinmr-BOHK-WAX9X:~/Practica.8/sesion08$ gdb mainsesion09.cpp 
+GNU gdb (Ubuntu 9.2-0ubuntu1~20.04) 9.2
+Copyright (C) 2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from mainsesion09.cpp...
+(gdb) list 1, 55
+1	#include <iostream>
+2	/*
+3	 Este programa trata mantener dos variables, la primera 
+4	 realiza la multiplicación de valores.
+5	 La segunda ...
+6	*/
+7	
+8	/* Incrementa en 2 una variable */
+9	int cuenta (int y)
+10	{
+11	   int tmp;
+12	
+13	   tmp = y + 2; 
+14	
+15	   /* break */
+16	
+17	   return tmp;
+18	}
+19	
+20	/* Calcula la multiplicación de dos números */
+21	int multiplica (int x, int y)
+22	{
+23	   int final;
+--Type <RET> for more, q to quit, c to continue without paging--c
+24	   int i;
+25	
+26	   final = 0;
+27	   for (i = 0; i < x; i ++)
+28	   {
+29	      /* break */
+30	      final = final + y;
+31	   }
+32	
+33	   return final;
+34	}
+35	
+36	int main (void)
+37	{
+38	   int final1;
+39	   int final2;
+40	   int i;
+41	
+42	   /* break */
+43	   final1 = multiplica(3, 2);
+44	
+45	
+46	   for (i = 0; i < 100; i ++)
+47	      /* break */
+48	      final2 = cuenta(i);
+49	
+50	   std::cout << final1 << "\n";
+51	
+52	   return 0;
+53	}
+54	
+(gdb) break 15
+Punto de interrupción 1 at 0x11bd: file mainsesion09a.cpp, line 17.
+(gdb) break 29
+Punto de interrupción 2 at 0x11e6: file mainsesion09a.cpp, line 30.
+(gdb) break 42
+Punto de interrupción 3 at 0x1203: file mainsesion09a.cpp, line 43.
+(gdb) break 47
+Punto de interrupción 4 at 0x1222: file mainsesion09a.cpp, line 48.
+(gdb) run
+Starting program: /home/quintinmr/Practica.8/sesion08/mainsesion09.cpp 
+
+Breakpoint 3, main () at mainsesion09a.cpp:43
+43	   final1 = multiplica(3, 2);
+(gdb) info locals
+final1 = 0
+final2 = 0
+i = 32767
+(gdb) p/x$pc
+$1 = 0x555555555203
+(gdb) x/i$pc
+=> 0x555555555203 <main()+12>:	mov    $0x2,%esi
+(gdb) next
+
+Breakpoint 2, multiplica (x=3, y=2) at mainsesion09a.cpp:30
+30	      final = final + y;
+(gdb) info locals
+final = 0
+i = 0
+(gdb) p/x$pc
+$2 = 0x5555555551e6
+(gdb) x/i$pc
+=> 0x5555555551e6 <multiplica(int, int)+36>:	mov    -0x18(%rbp),%eax
+(gdb) next
+27	   for (i = 0; i < x; i ++)
+(gdb) info locals
+final = 2
+i = 0
+(gdb) p/x$pc
+$3 = 0x5555555551ec
+(gdb) x/i$pc
+=> 0x5555555551ec <multiplica(int, int)+42>:	addl   $0x1,-0x4(%rbp)
+(gdb) next
+
+Breakpoint 2, multiplica (x=3, y=2) at mainsesion09a.cpp:30
+30	      final = final + y;
+(gdb) info locals
+final = 2
+i = 1
+(gdb) p/x$pc
+$4 = 0x5555555551e6
+(gdb) x/i$pc
+

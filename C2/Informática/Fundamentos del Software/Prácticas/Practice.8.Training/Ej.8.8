@@ -1,0 +1,99 @@
+quintinmr@quintinmr-BOHK-WAX9X:~/Practica.8/sesion08$ g++ -g mainsesion09b.cpp -o ejemplo9.8
+quintinmr@quintinmr-BOHK-WAX9X:~/Practica.8/sesion08$ gdb ejemplo9.8
+GNU gdb (Ubuntu 9.2-0ubuntu1~20.04) 9.2
+Copyright (C) 2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from ejemplo9.8...
+(gdb) run
+Starting program: /home/quintinmr/Practica.8/sesion08/ejemplo9.8 
+6
+[Inferior 1 (process 3339) exited normally]
+(gdb) list
+23	   int final;
+24	   int i;
+25	
+26	   final = 0;
+27	   for (i = 0; i < x; i ++)
+28	   {
+29	      /* break */
+30	      final = final + y;
+31	   }
+32	
+(gdb) break 47
+Punto de interrupción 1 at 0x555555555222: file mainsesion09b.cpp, line 48.
+(gdb) run
+Starting program: /home/quintinmr/Practica.8/sesion08/ejemplo9.8 
+
+Breakpoint 1, main () at mainsesion09b.cpp:48
+48	      final2 = cuenta(i);
+(gdb) step
+cuenta (y=3) at mainsesion09b.cpp:10
+10	{
+(gdb) step
+13	   tmp = y + 2; 
+(gdb) step
+17	   return tmp;
+(gdb) step
+18	}
+(gdb) step
+main () at mainsesion09b.cpp:46
+46	   for (i = 0; i < 100; i ++)
+(gdb) step
+
+Breakpoint 1, main () at mainsesion09b.cpp:48
+48	      final2 = cuenta(i);
+(gdb) step
+cuenta (y=0) at mainsesion09b.cpp:10
+10	{
+(gdb) step
+13	   tmp = y + 2; 
+(gdb) step
+17	   return tmp;
+(gdb) step
+18	}
+(gdb) next
+main () at mainsesion09b.cpp:46
+46	   for (i = 0; i < 100; i ++)
+(gdb) next
+
+Breakpoint 1, main () at mainsesion09b.cpp:48
+48	      final2 = cuenta(i);
+(gdb) next
+46	   for (i = 0; i < 100; i ++)
+(gdb) next
+
+Breakpoint 1, main () at mainsesion09b.cpp:48
+48	      final2 = cuenta(i);
+(gdb) next
+46	   for (i = 0; i < 100; i ++)
+(gdb) next
+
+Breakpoint 1, main () at mainsesion09b.cpp:48
+48	      final2 = cuenta(i);
+(gdb) next
+46	   for (i = 0; i < 100; i ++)
+(gdb) next
+
+Breakpoint 1, main () at mainsesion09b.cpp:48
+48	      final2 = cuenta(i);
+(gdb) next
+46	   for (i = 0; i < 100; i ++)
+(gdb) next
+
+Breakpoint 1, main () at mainsesion09b.cpp:48
+48	      final2 = cuenta(i);
+(gdb) next
+46	   for (i = 0; i < 100; i ++)
+(gdb)

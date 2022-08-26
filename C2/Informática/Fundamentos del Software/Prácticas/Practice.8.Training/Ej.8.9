@@ -1,0 +1,74 @@
+quintinmr@quintinmr-BOHK-WAX9X:~/Practica.8/sesion08$ gdb ejemplo9.8 
+GNU gdb (Ubuntu 9.2-0ubuntu1~20.04) 9.2
+Copyright (C) 2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from ejemplo9.8...
+(gdb) list
+23	   int final;
+24	   int i;
+25	
+26	   final = 0;
+27	   for (i = 0; i < x; i ++)
+28	   {
+29	      /* break */
+30	      final = final + y;
+31	   }
+32	
+(gdb) list cuenta(int) 
+5	 La segunda ...
+6	*/
+7	
+8	/* Incrementa en 2 una variable */
+9	int cuenta (int y)
+10	{
+11	   int tmp;
+12	
+13	   tmp = y + 2; 
+14	
+(gdb) break cuenta
+Punto de interrupción 1 at 0x11a9: file mainsesion09b.cpp, line 10.
+(gdb) run
+Starting program: /home/quintinmr/Practica.8/sesion08/ejemplo9.8 
+
+Breakpoint 1, cuenta (y=3) at mainsesion09b.cpp:10
+10	{
+(gdb) info frame
+Stack level 0, frame at 0x7fffffffdf90:
+ rip = 0x5555555551a9 in cuenta (mainsesion09b.cpp:10); 
+    saved rip = 0x55555555522c
+ called by frame at 0x7fffffffdfb0
+ source language c++.
+ Arglist at 0x7fffffffdf80, args: y=3
+ Locals at 0x7fffffffdf80, Previous frame's sp is 0x7fffffffdf90
+ Saved registers:
+  rip at 0x7fffffffdf88
+(gdb) down
+Bottom (innermost) frame selected; you cannot go down.
+(gdb) up
+#1  0x000055555555522c in main () at mainsesion09b.cpp:48
+48	      final2 = cuenta(i);
+(gdb) down
+#0  cuenta (y=3) at mainsesion09b.cpp:10
+10	{
+(gdb) info frame
+Stack level 0, frame at 0x7fffffffdf90:
+ rip = 0x5555555551a9 in cuenta (mainsesion09b.cpp:10); 
+    saved rip = 0x55555555522c
+ called by frame at 0x7fffffffdfb0
+ source language c++.
+ Arglist at 0x7fffffffdf80, args: y=3
+ Locals at 0x7fffffffdf80, Previous frame's sp is 0x7fffffffdf90
+ Saved registers:
+  rip at 0x7fffffffdf88

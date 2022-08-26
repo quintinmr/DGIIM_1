@@ -1,0 +1,129 @@
+quintinmr@quintinmr-BOHK-WAX9X:~/Practica.8/sesion08$ gdb mainsesion09.cpp 
+GNU gdb (Ubuntu 9.2-0ubuntu1~20.04) 9.2
+Copyright (C) 2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from mainsesion09.cpp...
+(gdb) list 1, 55
+1	#include <iostream>
+2	/*
+3	 Este programa trata mantener dos variables, la primera 
+4	 realiza la multiplicación de valores.
+5	 La segunda ...
+6	*/
+7	
+8	/* Incrementa en 2 una variable */
+9	int cuenta (int y)
+10	{
+11	   int tmp;
+12	
+13	   tmp = y + 2; 
+14	
+15	   /* break */
+16	
+17	   return tmp;
+18	}
+19	
+20	/* Calcula la multiplicación de dos números */
+21	int multiplica (int x, int y)
+22	{
+23	   int final;
+--Type <RET> for more, q to quit, c to continue without paging--c
+24	   int i;
+25	
+26	   final = 0;
+27	   for (i = 0; i < x; i ++)
+28	   {
+29	      /* break */
+30	      final = final + y;
+31	   }
+32	
+33	   return final;
+34	}
+35	
+36	int main (void)
+37	{
+38	   int final1;
+39	   int final2;
+40	   int i;
+41	
+42	   /* break */
+43	   final1 = multiplica(3, 2);
+44	
+45	
+46	   for (i = 0; i < 100; i ++)
+47	      /* break */
+48	      final2 = cuenta(i);
+49	
+50	   std::cout << final1 << "\n";
+51	
+52	   return 0;
+53	}
+54	
+(gdb) break 47
+Punto de interrupción 1 at 0x1222: file mainsesion09a.cpp, line 48.
+(gdb) continue 
+Este programa no está corriendo.
+(gdb) run
+Starting program: /home/quintinmr/Practica.8/sesion08/mainsesion09.cpp 
+
+Breakpoint 1, main () at mainsesion09a.cpp:48
+48	      final2 = cuenta(i);
+(gdb) continue
+Continuando.
+
+Breakpoint 1, main () at mainsesion09a.cpp:48
+48	      final2 = cuenta(i);
+(gdb) continue
+Continuando.
+
+Breakpoint 1, main () at mainsesion09a.cpp:48
+48	      final2 = cuenta(i);
+(gdb) info locals
+final1 = 6
+final2 = 3
+i = 2
+(gdb) dis
+(gdb) disassemble
+Dump of assembler code for function main():
+   0x00005555555551f7 <+0>:	endbr64 
+   0x00005555555551fb <+4>:	push   %rbp
+   0x00005555555551fc <+5>:	mov    %rsp,%rbp
+   0x00005555555551ff <+8>:	sub    $0x10,%rsp
+   0x0000555555555203 <+12>:	mov    $0x2,%esi
+   0x0000555555555208 <+17>:	mov    $0x3,%edi
+   0x000055555555520d <+22>:	callq  0x5555555551c2 <multiplica(int, int)>
+   0x0000555555555212 <+27>:	mov    %eax,-0x8(%rbp)
+   0x0000555555555215 <+30>:	movl   $0x0,-0xc(%rbp)
+   0x000055555555521c <+37>:	cmpl   $0x63,-0xc(%rbp)
+   0x0000555555555220 <+41>:	jg     0x555555555235 <main()+62>
+=> 0x0000555555555222 <+43>:	mov    -0xc(%rbp),%eax
+   0x0000555555555225 <+46>:	mov    %eax,%edi
+   0x0000555555555227 <+48>:	callq  0x5555555551a9 <cuenta(int)>
+   0x000055555555522c <+53>:	mov    %eax,-0x4(%rbp)
+   0x000055555555522f <+56>:	addl   $0x1,-0xc(%rbp)
+   0x0000555555555233 <+60>:	jmp    0x55555555521c <main()+37>
+   0x0000555555555235 <+62>:	mov    -0x8(%rbp),%eax
+   0x0000555555555238 <+65>:	mov    %eax,%esi
+   0x000055555555523a <+67>:	lea    0x2dff(%rip),%rdi        # 0x555555558040 <_ZSt4cout@@GLIBCXX_3.4>
+   0x0000555555555241 <+74>:	callq  0x5555555550b0 <_ZNSolsEi@plt>
+--Type <RET> for more, q to quit, c to continue without paging--c
+   0x0000555555555246 <+79>:	lea    0xdb8(%rip),%rsi        # 0x555555556005
+   0x000055555555524d <+86>:	mov    %rax,%rdi
+   0x0000555555555250 <+89>:	callq  0x555555555090 <_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@plt>
+   0x0000555555555255 <+94>:	mov    $0x0,%eax
+   0x000055555555525a <+99>:	leaveq 
+   0x000055555555525b <+100>:	retq   
+End of assembler dump.
+
